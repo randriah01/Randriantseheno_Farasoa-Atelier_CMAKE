@@ -32,4 +32,15 @@ int main(int argc, char *argv[]){
 	return 0;
 }
 
+int main(int argc, char* argv[]) {
+    if(argc < 3) return 1;
+
+    if(strcmp(argv[1], "car") == 0) {
+        int value = atoi(argv[2]);
+        printf("%d\n", carre(value));
+    }
+
+    return 0;
+}
+
 		
