@@ -46,3 +46,28 @@ jobs:
           cmake ..
           make
           ./src/calculator car 5
+        
+  Test_Carre:
+  runs-on: ubuntu-latest
+  needs: Compilation
+  steps:
+    - uses: actions/checkout@v3
+
+    - name: Compilation
+      run: |
+        mkdir -p build
+        cd build
+        cmake ..
+        make
+
+    - name: Exécuter la fonction carré
+      run: |
+        mkdir -p output
+        ./build/src/calculator car 5 > output/carre_result.txt
+
+    - name: Publier l'artefact
+      uses: actions/upload-artifact@v3
+      with:
+        name: carre-result
+        path: output/carre_result.txt
+
